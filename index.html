@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programando um Futuro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Espaço para imagens -->
+    <div class="image-container">
+        <img src="./img/logo.png" alt="Logo do Programando um Futuro">
+    </div>
+
+    <!-- Menu deslizante com setas -->
+    <div class="slider">
+        <div class="slides">
+            <div class="slide" onclick="changeContent(1)">
+                <p><strong>A educação é a base para um futuro melhor.</strong></p>
+            </div>
+            <div class="slide" onclick="changeContent(2)">
+                <p><strong>O conhecimento transforma vidas.</strong></p>
+            </div>
+            <div class="slide" onclick="changeContent(3)">
+                <p><strong>Um caminho a frente, para um futuro de sucesso</strong></p>
+            </div>
+        </div>
+
+        <!-- Botões de navegação -->
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <!-- Conteúdo de apresentação -->
+    <div class="content" id="presentation-content">
+        <p><strong>Bem-vindo ao site "Programando um Futuro"! Nosso objetivo é mostrar como a educação pode transformar
+                vidas e contribuir para o desenvolvimento pessoal e profissional.</strong></p>
+    </div>
+
+    <div class="content">
+        <p><strong>Clique em um dos textos do slider acima para ver o conteúdo correspondente.</strong></p>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 Programando um Futuro. Todos os direitos reservados.</p>
+        <!-- Bandeira do Brasil no rodapé -->
+        <img src="./img/bandeira-brasil.png" alt="Bandeira do Brasil" class="bandeira-brasil">
+    </footer>
+
+
+
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu-items');
+            menu.classList.toggle('open');
+        }
+        let currentSlide = 0;
+
+        function moveSlide(step) {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+
+            currentSlide = (currentSlide + step + totalSlides) % totalSlides;
+
+            const slider = document.querySelector('.slides');
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function changeContent(slideNumber) {
+            const contentElement = document.getElementById('presentation-content');
+
+            if (slideNumber === 1) {
+                contentElement.innerHTML = `
+                <p><strong>Educação para um futuro melhor:</strong> 
+                A educação é a base para o desenvolvimento de uma sociedade mais justa e igualitária, mas, no Brasil, o cenário é desafiador. 
+                No ensino público, a falta de recursos, infraestrutura inadequada e a baixa qualificação docente limitam o aprendizado dos alunos e perpetuam as desigualdades. 
+                Nas escolas particulares, embora haja melhores condições, o foco excessivo nos vestibulares prejudica uma formação mais ampla e crítica. 
+                A tecnologia pode ser uma aliada na melhoria desse quadro, tornando o ensino mais dinâmico, acessível e personalizado. 
+                Com plataformas online, capacitação para o uso dos equipamentos e maior conectividade, é possível transformar a educação brasileira, 
+                aproximando-a das demandas do século XXI e garantindo oportunidades iguais para todos os estudantes, independentemente de sua origem social</p>
+            `;
+            } else if (slideNumber === 2) {
+                contentElement.innerHTML = `
+                <p><strong>O poder do conhecimento:</strong> 
+                O conhecimento diversificado tem o poder de transformar a vida dos estudantes ao ampliar suas habilidades e perspectivas, 
+                preparando-os melhor para enfrentar os desafios do mercado de trabalho e da sociedade. Ao explorar áreas como ciência, tecnologia, artes e humanidades, 
+                os alunos desenvolvem pensamento crítico, criatividade e a capacidade de resolver problemas complexos. 
+                No Brasil, tanto o ensino médio público quanto o particular podem se beneficiar significativamente do uso da tecnologia. 
+                Nas escolas públicas, ela pode reduzir desigualdades, oferecendo acesso a conteúdos de qualidade e permitindo uma aprendizagem mais personalizada e inclusiva. 
+                Já nas escolas particulares, ferramentas tecnológicas podem potencializar o ensino e incentivar o protagonismo dos estudantes. Com investimentos em infraestrutura, 
+                capacitação docente e parcerias com o setor privado, 
+                o Brasil pode usar a tecnologia para tornar a educação mais equitativa e preparar as futuras gerações para um mundo cada vez mais digitalizado e globalizado.</p>
+            `;
+            } else if (slideNumber === 3) {
+                contentElement.innerHTML = `
+                <p><strong>Programando o sucesso:</strong> 
+                O ensino de programação desde cedo tem o potencial de revolucionar o futuro dos estudantes, como demonstrado por iniciativas globais bem-sucedidas, como a Hour of Code. 
+                Esse movimento internacional, presente em mais de 180 países, promove a introdução à programação, 
+                desmistificando a computação e mostrando que qualquer pessoa pode aprender conceitos fundamentais, como pensamento lógico e resolução de problemas.<br>
+
+                No Reino Unido, a programação faz parte do currículo nacional desde 2014. Crianças a partir dos cinco anos já são expostas a conceitos básicos, como algoritmos e lógica, e, 
+                aos onze, começam a aprender linguagens de programação, como Python. Esse modelo tem inspirado outros países a repensarem suas grades curriculares, 
+                incluindo o ensino médio com disciplinas de tecnologia da informação, preparando os jovens para um mercado de trabalho moderno e cada vez mais tecnológico.<br>
+
+                No Brasil, incluir programação no currículo escolar e incentivar eventos como a <strong> Hour of Code</strong>  em escolas públicas e privadas pode preparar os alunos para as demandas do século XXI.
+                Além de contribuir para a inclusão digital, essas iniciativas podem fomentar o desenvolvimento de habilidades essenciais, como pensamento crítico e criatividade, 
+                promovendo uma educação mais alinhada ao futuro.</p>
+            `;
+            }
+        }
+    </script>
+</body>
+
+</html>
